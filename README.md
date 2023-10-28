@@ -1,5 +1,5 @@
 # TaskManager
 Task manager using cra
 
-npm i 
+npm i,
 npm start
