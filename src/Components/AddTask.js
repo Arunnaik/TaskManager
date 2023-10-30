@@ -6,21 +6,24 @@ const Task = ({ addTask }) => {
     description: "",
     status: "not completed",
   });
-  const addTaskHandler = () => {
+  const addTaskHandler = (e) => {
+    e.preventDefault()
     addTask(newTask);
     setNewTask({ title: "", description: "", status: "not completed" });
   };
   return (
     <div className={styles.addTaskCont}>
       <h2>Add Task</h2>
-      <div className={styles.inputCont}>
+      <form onSubmit={addTaskHandler} className={styles.inputCont}>
         <input
           type="text"
           placeholder="Title"
           value={newTask.title}
+          required
           onChange={(e) => setNewTask({ ...newTask, title: e.target.value })}
         />
         <input
+          required
           type="text"
           placeholder="Description"
           value={newTask.description}
@@ -28,8 +31,8 @@ const Task = ({ addTask }) => {
             setNewTask({ ...newTask, description: e.target.value })
           }
         />
-        <button className={styles.btn} onClick={addTaskHandler}>Add Task</button>
-      </div>
+        <button type="submit" className={styles.btn}>Add Task</button>
+      </form>
     </div>
   );
 };
